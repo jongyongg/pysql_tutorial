@@ -70,14 +70,14 @@ class CountyCRUD:
             """, (country, country_id))
             self.conn.commit()
             print(f"국가 {country_id}의 정보가 업데이트되었습니다.")
-#    def delete_country(self,country_id):
-#        """영화 정보를 삭제합니다."""
-#        with self.conn.cursor() as cur:
-#            cur.execute("DELETE FROM country WHERE country_id = %s;", (country_id,))
-#            self.conn.commit()
-#            print(f"country {country_id}의 정보가 삭제되었습니다.")
-#    def close(self):
-#        self.conn.close()
+    def delete_country(self,country_id):
+        """영화 정보를 삭제합니다."""
+        with self.conn.cursor() as cur:
+            cur.execute("DELETE FROM country WHERE country_id = %s;", (country_id,))
+            self.conn.commit()
+            print(f"country {country_id}의 정보가 삭제되었습니다.")
+    def close(self):
+        self.conn.close()
 
 country_crud = CountyCRUD()
 country_id = country_crud.create_country("Lion")
@@ -86,4 +86,3 @@ country_crud.read_all_country()
 country_crud.update_country(country="Tiger", country_id=country_id )
 country_crud.delete_country(country_id)
 country_crud.close()
-
